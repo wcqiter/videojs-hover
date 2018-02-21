@@ -1,0 +1,14 @@
+{
+  "generator-videojs-plugin": {
+    "scope": "videojs-hover",
+    "name": "hover",
+    "description": "For customizable overlay of text and images on video.",
+    "author": "Dennis Wong",
+    "license": "mit",
+    "sass": false,
+    "ie8": true,
+    "docs": false,
+    "lang": false,
+    "husky": "lint"
+  }
+}
