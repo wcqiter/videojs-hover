@@ -10,7 +10,8 @@ var default_hover = {
 	'start': 0,
 	'duration': 5,
 	'playlist': -1,
-	'clickable': false
+	'clickable': false,
+	"blank_target": true
 };
 var default_text = {
 	'type': "text",
@@ -99,7 +100,10 @@ const registerPlugin = videojs.registerPlugin || videojs.plugin;
 			if(!para["href"]) {
 				throw new Error('href is required when clickable is true!');
 			} else {
-				el.innerHTML = "<a href='" + para["href"] + "'>" + html + "</a>";
+				var blank = "";
+				if(para["blank_target"])
+					blank = "target='_blank'";
+				el.innerHTML = "<a href='" + para["href"] + "' " + blank + ">" + html + "</a>";
 			}
 		}
  		player.el().appendChild(el);
