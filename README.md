@@ -73,21 +73,21 @@ The parameters are as below:
 
 | Parameter | Data type | Required | Default | Value/Range | Use in Text component | Use in Image component | Usage |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| type | string | &#10004 | "text" | "text" / "img" | &#10004 | &#10004 | For indicating type of component |
-| x-pos | integer | &#10004 | 100 | >0 | &#10004 | &#10004 | For the x-coordinate in pixel from the left top corner of video player |
-| y-pos | integer | &#10004 | 100 | >0 | &#10004 | &#10004 | For the y-coordinate in pixel from the left top corner of video player |
-| width | string |  | "100px" | "npx" |  | &#10004 | For the width of image in pixel |
-| height | string |  | "100px" | "npx" |  | &#10004 | For the height of image in pixel |
-| content | string |  | "Hover" |  | &#10004 |  | For the content of text |
-| src | string |  | "" |  |  | &#10004 | For the source url of image |
-| start | float | &#10004 | 0 | >0 | &#10004 | &#10004 | For the start time in second when the overlay show |
-| duration | float | &#10004 | 0 | >0 | &#10004 | &#10004 | For the duration of the overlay show |
-| padding | integer |  | 10 | >0 | &#10004 | &#10004 | For the padding of the component |
-| font-size | integer |  | 18 | >0 | &#10004 |  | For the font size of text |
-| color | string |  | "#fff" | >0 | &#10004 |  | For the text color |
-| background-color | string |  | "#000" | >0 | &#10004 | &#10004 | For the color of the background |
-| opacity | float |  | 0.8 | 0~1 | &#10004 | &#10004 | For the opacity of the background |
-| playlist | integer |  | -1 | >0 | &#10004 | &#10004 | For the playlist index of the component corrensponding to |
+| type | string | :heavy_check_mark: | "text" | "text" / "img" | :heavy_check_mark: | :heavy_check_mark: | For indicating type of component |
+| x-pos | integer | :heavy_check_mark: | 100 | >0 | :heavy_check_mark: | :heavy_check_mark: | For the x-coordinate in pixel from the left top corner of video player |
+| y-pos | integer | :heavy_check_mark: | 100 | >0 | :heavy_check_mark: | :heavy_check_mark: | For the y-coordinate in pixel from the left top corner of video player |
+| width | string |  | "100px" | "npx" |  | :heavy_check_mark: | For the width of image in pixel |
+| height | string |  | "100px" | "npx" |  | :heavy_check_mark: | For the height of image in pixel |
+| content | string |  | "Hover" |  | :heavy_check_mark: |  | For the content of text |
+| src | string |  | "" |  |  | :heavy_check_mark: | For the source url of image |
+| start | float | :heavy_check_mark: | 0 | >0 | :heavy_check_mark: | :heavy_check_mark: | For the start time in second when the overlay show |
+| duration | float | :heavy_check_mark: | 0 | >0 | :heavy_check_mark: | :heavy_check_mark: | For the duration of the overlay show |
+| padding | integer |  | 10 | >0 | :heavy_check_mark: | :heavy_check_mark: | For the padding of the component |
+| font-size | integer |  | 18 | >0 | :heavy_check_mark: |  | For the font size of text |
+| color | string |  | "#fff" | >0 | :heavy_check_mark: |  | For the text color |
+| background-color | string |  | "#000" | >0 | :heavy_check_mark: | :heavy_check_mark: | For the color of the background |
+| opacity | float |  | 0.8 | 0~1 | :heavy_check_mark: | :heavy_check_mark: | For the opacity of the background |
+| playlist | integer |  | -1 | >0 | :heavy_check_mark: | :heavy_check_mark: | For the playlist index of the component corrensponding to |
 
 ## License
 
