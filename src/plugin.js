@@ -18,14 +18,11 @@ var default_text = {
 	'content': "Hover",
 	'font-size': 18,
 	'color': "#fff",
-	'background-color': "#000",
-	'opacity': 0.8,
+	'background-color': "rgba(0,0,0, 0.5)"
 };
 var default_img = {
 	'type': "img",
-	'src': "",
-	'width': "100px",
-	'height': "100px"
+	'src': ""
 };
 var defaults = {
 	defaultset: default_hover,
@@ -66,7 +63,18 @@ const registerPlugin = videojs.registerPlugin || videojs.plugin;
  		  el.style["color"] = para["color"];
  		} else if(item["type"] == "img") {
  			para = Object.assign({}, default_img, para);
- 				html = "<img src='" + para["src"] + "' width='" + para["width"] + "' height='" + para["height"] + "'></img>";
+			html = "<img src='" + para["src"] + "' ";
+			if(para['width']) {
+				html += "width='" + para["width"] + "px' ";
+			} else {
+				html += "width='auto' ";
+			}
+			if(para['height']) {
+				html += "height='" + para["height"] + "px' ";
+			} else {
+				html += "height='auto' ";
+			}
+ 			html += "></img>";
  		}
 		if(para["x-pos"] > 1 || para["x-pos"] < 0) {
 			throw new Error('x-pos of component should be in a range from 0 to 1');
@@ -82,7 +90,6 @@ const registerPlugin = videojs.registerPlugin || videojs.plugin;
 			throw new Error('opacity of component should be in a range from 0 to 1');
 		}
  	  el.style["padding"] = para["padding"] + "px";
- 	  el.style["opacity"] = para["opacity"];
 		if(para["z-index"] < 0) {
 			throw new Error('z-index of component should be > 0');
 		}
