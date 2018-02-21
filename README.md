@@ -82,6 +82,7 @@ The parameters are as below:
 | playlist | integer |  | -1 | >0 | :heavy_check_mark: | :heavy_check_mark: | For the playlist index of the component corrensponding to |
 | clickable | boolean |  | false | true/false | :heavy_check_mark: | :heavy_check_mark: | To indicate the component is clickable |
 | href | string |  |  |  | :heavy_check_mark: | :heavy_check_mark: | Required clickable to be true, the url of the clickable component |
+| blank_target | boolean |  | true | true/false | :heavy_check_mark: | :heavy_check_mark: | To indicate if the clickable component will open a new tab or not |
 | z-index | integer |  | 999 | >0 | :heavy_check_mark: | :heavy_check_mark: | For the z-index of the component |
 
 ## License
