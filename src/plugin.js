@@ -52,8 +52,6 @@ const registerPlugin = videojs.registerPlugin || videojs.plugin;
  *           A plain object containing options for the plugin.
  */
  var setup = function setup(player, data) {
-   var heightOfVideo = window.document.getElementById("video_html5_api").clientHeight;
-   var widthOfVideo = window.document.getElementById("video_html5_api").clientWidth;
 
  	data.forEach(function(item) {
  		var el = document.createElement('div');
@@ -76,8 +74,6 @@ const registerPlugin = videojs.registerPlugin || videojs.plugin;
 		if(para["y-pos"] > 1 || para["y-pos"] < 0) {
 			throw new Error('y-pos of component should be in a range from 0 to 1');
 		}
- 	  el.style.left = para["x-pos"]*widthOfVideo + "px";
- 	  el.style.top = para["y-pos"]*heightOfVideo + "px";
  	  el.style["background-color"] = para["background-color"];
 		if(para["padding"] < 0) {
 			throw new Error('padding of component should be > 0');
@@ -114,12 +110,24 @@ const registerPlugin = videojs.registerPlugin || videojs.plugin;
  					var playlist_flag = player.playlist.currentIndex() == para["playlist"];
  				}
  				if(playlist_flag && para["start"] <= player.currentTime() && (para["start"]+para["duration"]) > player.currentTime()) {
- 					if(el.style["display"]!="block")
- 						el.style["display"] = "block";
+ 					if(el.style["display"]!="block") {
+						var heightOfVideo = window.document.getElementById("video_html5_api").clientHeight;
+						var widthOfVideo = window.document.getElementById("video_html5_api").clientWidth;
+					 	el.style.left = para["x-pos"]*widthOfVideo + "px";
+					 	el.style.top = para["y-pos"]*heightOfVideo + "px";
+	  				el.style["display"] = "block";
+					}
  				} else {
  					if(el.style["display"]!="none")
  						el.style["display"] = "none";
  				}
+				window.addEventListener("resize", function() {
+					var heightOfVideo = window.document.getElementById("video_html5_api").clientHeight;
+					var widthOfVideo = window.document.getElementById("video_html5_api").clientWidth;
+
+					el.style.left = para["x-pos"]*widthOfVideo + "px";
+					el.style.top = para["y-pos"]*heightOfVideo + "px";
+				});
  			});
  	});
  };

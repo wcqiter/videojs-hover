@@ -1,6 +1,6 @@
 {
   "name": "@videojs-hover/videojs-hover",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "For customizable overlay of text and images on video.",
   "main": "dist/videojs-hover.cjs.js",
   "module": "dist/videojs-hover.es.js",
