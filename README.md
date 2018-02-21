@@ -72,7 +72,7 @@ player.hover({
 The parameters are as below:
 
 | Parameter | Data type | Required | Default | Value/Range | Use in Text component | Use in Image component | Usage |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| --- | --- | --- | --- | --- | --- | --- | --- |
 | type | string | &#10004 | "text" | "text" / "img" | &#10004 | &#10004 | For indicating type of component |
 | x-pos | integer | &#10004 | 100 | >0 | &#10004 | &#10004 | For the x-coordinate in pixel from the left top corner of video player |
 | y-pos | integer | &#10004 | 100 | >0 | &#10004 | &#10004 | For the y-coordinate in pixel from the left top corner of video player |
