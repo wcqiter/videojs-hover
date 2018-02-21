@@ -3,13 +3,14 @@ import {version as VERSION} from '../package.json';
 
 // Default options for the plugin.
 var default_hover = {
-	'x-pos': 100,
-	'y-pos': 100,
+	'x-pos': 0,
+	'y-pos': 0,
 	'padding': 10,
 	'z-index': 9999,
 	'start': 0,
 	'duration': 5,
-	'playlist': -1
+	'playlist': -1,
+	'clickable': false
 };
 var default_text = {
 	'type': "text",
@@ -54,29 +55,53 @@ const registerPlugin = videojs.registerPlugin || videojs.plugin;
    var widthOfVideo = window.document.getElementById("video_html5_api").clientWidth;
 
  	data.forEach(function(item) {
- 		var el = document.createElement('div', {
- 			className: 'vjs-hover-div'
- 		});
+ 		var el = document.createElement('div');
  		var para = Object.assign({}, default_hover, item);
+		var html = "";
  		if(!item["type"]) {
-
+		  throw new Error('type of component is required, valid values: text/img');
  		} else if(item["type"] == "text") {
  			para = Object.assign({}, default_text, para);
- 			el.innerHTML = para["content"];
+ 			html = para["content"];
  		  el.style["font-size"] = para["font-size"] + "px";
  		  el.style["color"] = para["color"];
  		} else if(item["type"] == "img") {
  			para = Object.assign({}, default_img, para);
- 				el.innerHTML = "<img src='" + para["src"] + "' width='" + para["width"] + "' height='" + para["height"] + "'></img>";
+ 				html = "<img src='" + para["src"] + "' width='" + para["width"] + "' height='" + para["height"] + "'></img>";
  		}
- 	  el.style.left = para["x-pos"] + "px";
- 	  el.style.top = para["y-pos"] + "px";
+		if(para["x-pos"] > 1 || para["x-pos"] < 0) {
+			throw new Error('x-pos of component should be in a range from 0 to 1');
+		}
+		if(para["y-pos"] > 1 || para["y-pos"] < 0) {
+			throw new Error('y-pos of component should be in a range from 0 to 1');
+		}
+ 	  el.style.left = para["x-pos"]*widthOfVideo + "px";
+ 	  el.style.top = para["y-pos"]*heightOfVideo + "px";
  	  el.style["background-color"] = para["background-color"];
+		if(para["padding"] < 0) {
+			throw new Error('padding of component should be > 0');
+		}
+		if(para["opacity"] > 1 || para["opacity"] < 0) {
+			throw new Error('opacity of component should be in a range from 0 to 1');
+		}
  	  el.style["padding"] = para["padding"] + "px";
  	  el.style["opacity"] = para["opacity"];
+		if(para["z-index"] < 0) {
+			throw new Error('z-index of component should be > 0');
+		}
  	  el.style["z-index"] = para["z-index"];
  		el.style.position = "absolute";
  		el.style["display"] = "none";
+		if(!para["clickable"]) {
+			el.style["pointer-events"] = "none";
+			el.innerHTML = html;
+		} else {
+			if(!para["href"]) {
+				throw new Error('href is required when clickable is true!');
+			} else {
+				el.innerHTML = "<a href='" + para["href"] + "'>" + html + "</a>";
+			}
+		}
  		player.el().appendChild(el);
  			player.on('timeupdate', function() {
  				if (!player.playlist) {
