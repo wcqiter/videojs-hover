@@ -39,32 +39,24 @@ player.hover({
 				{
 					'type': "text",
 					'content': "hi",
-					'x-pos': 400,
-					'y-pos': 400,
+					'x-pos': 0.1,
+					'y-pos': 0.5,
 					'start': 1,
-					'duration': 1,
+					'duration': 10,
 					'playlist': 0
 				},
-				{
-					'type': "text",
-					'content': "bye",
-					'x-pos': 800,
-					'y-pos': 600,
-					'start': 2,
-					'duration': 1,
-					'playlist': 0
-				},
-
 				{
 					'type': "img",
 					'src': "/img/picture.png",
-					'x-pos': 200,
-					'y-pos': 200,
+					'x-pos': 0.2,
+					'y-pos': 0.5,
 					'width': 100,
 					'height': 100,
 					'start': 3,
-					'duration': 1,
-					'playlist': 1
+					'duration': 10,
+					'playlist': 1,
+					"clickable": true,
+					"href": "/img/picture.png"
 				},
 			]
 		});
@@ -74,8 +66,8 @@ The parameters are as below:
 | Parameter | Data type | Required | Default | Value/Range | Use in Text component | Use in Image component | Usage |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | type | string | :heavy_check_mark: | "text" | "text" / "img" | :heavy_check_mark: | :heavy_check_mark: | For indicating type of component |
-| x-pos | integer | :heavy_check_mark: | 100 | >0 | :heavy_check_mark: | :heavy_check_mark: | For the x-coordinate in pixel from the left top corner of video player |
-| y-pos | integer | :heavy_check_mark: | 100 | >0 | :heavy_check_mark: | :heavy_check_mark: | For the y-coordinate in pixel from the left top corner of video player |
+| x-pos | float | :heavy_check_mark: | 0 | 0~1 | :heavy_check_mark: | :heavy_check_mark: | For the x-coordinate in pixel from the left top corner of video player |
+| y-pos | float | :heavy_check_mark: | 0 | 0~1 | :heavy_check_mark: | :heavy_check_mark: | For the y-coordinate in pixel from the left top corner of video player |
 | width | string |  | "100px" | "npx" |  | :heavy_check_mark: | For the width of image in pixel |
 | height | string |  | "100px" | "npx" |  | :heavy_check_mark: | For the height of image in pixel |
 | content | string |  | "Hover" |  | :heavy_check_mark: |  | For the content of text |
@@ -88,6 +80,9 @@ The parameters are as below:
 | background-color | string |  | "#000" | >0 | :heavy_check_mark: | :heavy_check_mark: | For the color of the background |
 | opacity | float |  | 0.8 | 0~1 | :heavy_check_mark: | :heavy_check_mark: | For the opacity of the background |
 | playlist | integer |  | -1 | >0 | :heavy_check_mark: | :heavy_check_mark: | For the playlist index of the component corrensponding to |
+| clickable | boolean |  | false | true/false | :heavy_check_mark: | :heavy_check_mark: | To indicate the component is clickable |
+| href | string |  |  |  | :heavy_check_mark: | :heavy_check_mark: | Required clickable to be true, the url of the clickable component |
+| z-index | integer |  | 999 | >0 | :heavy_check_mark: | :heavy_check_mark: | For the z-index of the component |
 
 ## License
 
