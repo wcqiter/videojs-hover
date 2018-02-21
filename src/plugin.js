@@ -22,8 +22,8 @@ var default_text = {
 var default_img = {
 	'type': "img",
 	'src': "",
-	'width': "100%",
-	'height': "100%"
+	'width': "100px",
+	'height': "100px"
 };
 var defaults = {
 	defaultset: default_hover,
@@ -67,7 +67,7 @@ const registerPlugin = videojs.registerPlugin || videojs.plugin;
  		  el.style["color"] = para["color"];
  		} else if(item["type"] == "img") {
  			para = Object.assign({}, default_img, para);
- 				el.innerHTML = "<img src='" + para["src"] + "' width='" + para["width"] + "px' height='" + para["height"] + "px'></img>";
+ 				el.innerHTML = "<img src='" + para["src"] + "' width='" + para["width"] + "' height='" + para["height"] + "'></img>";
  		}
  	  el.style.left = para["x-pos"] + "px";
  	  el.style.top = para["y-pos"] + "px";
