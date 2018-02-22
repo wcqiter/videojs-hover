@@ -106,7 +106,7 @@ const registerPlugin = videojs.registerPlugin || videojs.plugin;
 				var blank = "";
 				if(para["blank_target"])
 					blank = "target='_blank'";
-				el.innerHTML = "<a href='" + para["href"] + "' " + blank + ">" + html + "</a>";
+				el.innerHTML = "<a class='vjs-hover-a' onclick='player.pause();' href='" + para["href"] + "' " + blank + ">" + html + "</a>";
 			}
 		}
  		player.el().appendChild(el);
