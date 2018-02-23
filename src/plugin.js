@@ -6,7 +6,7 @@ var default_hover = {
 	'x-pos': 0,
 	'y-pos': 0,
 	'padding': 10,
-	'z-index': 9999,
+	'z-index': "auto",
 	'start': 0,
 	'duration': 5,
 	'playlist': -1,
@@ -61,16 +61,22 @@ const registerPlugin = videojs.registerPlugin || videojs.plugin;
  			html = para["content"];
  		  el.style["font-size"] = para["font-size"] + "px";
  		  el.style["color"] = para["color"];
+			if(para["padding"] < 0) {
+				throw new Error('padding of component should be > 0');
+			}
+	 	  el.style["padding"] = para["padding"] + "px";
  		} else if(item["type"] == "img") {
  			para = Object.assign({}, default_img, para);
-			html = "<img src='" + para["src"] + "' ";
+			var heightOfVideo = window.document.getElementById("video_html5_api").clientHeight;
+			var widthOfVideo = window.document.getElementById("video_html5_api").clientWidth;
+			html = "<img class='vjs-hover-img' src='" + para["src"] + "' ";
 			if(para['width']) {
-				html += "width='" + para["width"] + "px' ";
+				html += "width='" + para["width"]*widthOfVideo + "px' ";
 			} else {
 				html += "width='auto' ";
 			}
 			if(para['height']) {
-				html += "height='" + para["height"] + "px' ";
+				html += "height='" + para["height"]*heightOfVideo + "px' ";
 			} else {
 				html += "height='auto' ";
 			}
@@ -83,13 +89,9 @@ const registerPlugin = videojs.registerPlugin || videojs.plugin;
 			throw new Error('y-pos of component should be in a range from 0 to 1');
 		}
  	  el.style["background-color"] = para["background-color"];
-		if(para["padding"] < 0) {
-			throw new Error('padding of component should be > 0');
-		}
 		if(para["opacity"] > 1 || para["opacity"] < 0) {
 			throw new Error('opacity of component should be in a range from 0 to 1');
 		}
- 	  el.style["padding"] = para["padding"] + "px";
 		if(para["z-index"] < 0) {
 			throw new Error('z-index of component should be > 0');
 		}
@@ -110,7 +112,7 @@ const registerPlugin = videojs.registerPlugin || videojs.plugin;
 			}
 		}
  		player.el().appendChild(el);
- 			player.on('timeupdate', function() {
+ 		player.on('timeupdate', function() {
  				if (!player.playlist) {
  		      var playlist_flag = true;
  		    } else {
@@ -128,14 +130,25 @@ const registerPlugin = videojs.registerPlugin || videojs.plugin;
  					if(el.style["display"]!="none")
  						el.style["display"] = "none";
  				}
-				window.addEventListener("resize", function() {
-					var heightOfVideo = window.document.getElementById("video_html5_api").clientHeight;
-					var widthOfVideo = window.document.getElementById("video_html5_api").clientWidth;
+ 		});
+		window.addEventListener("resize", function() {
+			var heightOfVideo = window.document.getElementById("video_html5_api").clientHeight;
+			var widthOfVideo = window.document.getElementById("video_html5_api").clientWidth;
 
-					el.style.left = para["x-pos"]*widthOfVideo + "px";
-					el.style.top = para["y-pos"]*heightOfVideo + "px";
-				});
- 			});
+			el.style.left = para["x-pos"]*widthOfVideo + "px";
+			el.style.top = para["y-pos"]*heightOfVideo + "px";
+			if(para["clickable"]) {
+				var img_el = el.firstChild.firstChild;
+			} else {
+				var img_el = el.firstChild;
+			}
+			if(para['width']) {
+				img_el.setAttribute("width", para["width"]*widthOfVideo + "px");
+			}
+			if(para['height']) {
+				img_el.setAttribute("height", para["height"]*widthOfVideo + "px");
+			}
+		});
  	});
  };
  var onPlayerReady = function onPlayerReady(player, options) {
