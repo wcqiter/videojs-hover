@@ -30,35 +30,36 @@ This is the simplest case. Get the script in whatever way you prefer and include
 
 This is a sample options of hover plugin. 
 ```
-player.hover({
-			default_set: { // Define the default set of parameter used in this video player
-				'padding': 20,
-				'font-size': 40
-			},
-			data: [ // Define the components that rendered to be overlay to the video
-				{
-					'type': "text",
-					'content': "hi",
-					'x-pos': 0.1,
-					'y-pos': 0.5,
-					'start': 1,
-					'duration': 10,
-					'playlist': 0
-				},
-				{
-					'type': "img",
-					'src': "/img/picture.png",
-					'x-pos': 0.2,
-					'y-pos': 0.5,
-					'width': 0.1, // Only specific width, height will be auto
-					'start': 3,
-					'duration': 10,
-					'playlist': 1,
-					"clickable": true,
-					"href": "/img/picture.png"
-				},
-			]
-		});
+player.hover(
+  {
+    default_set: { // Define the default set of parameter used in this video player
+    'padding': 20,
+    'font-size': 40
+  },
+  data: [ // Define the components that rendered to be overlay to the video
+    {
+      'type': "text",
+      'content': "hi",
+      'x-pos': 0.1,
+      'y-pos': 0.5,
+      'start': 1,
+      'duration': 10,
+      'playlist': 0
+    },
+    {
+      'type': "img",
+      'src': "/img/picture.png",
+      'x-pos': 0.2,
+      'y-pos': 0.5,
+      'width': 0.1, // Only specific width, height will be auto
+      'start': 3,
+      'duration': 10,
+      'playlist': 1,
+      "clickable": true,
+      "href": "/img/picture.png"
+    },
+  ]
+});
 ```
 The parameters are as below:
 
