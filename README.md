@@ -12,6 +12,9 @@ npm install --save @videojs-hover/videojs-hover
 
 To include videojs-hover on your website or web application, use any of the following methods.
 
+## Demo
+Please visit [here](https://wcqiter.github.io/videojs-hover/).
+
 ### `<script>` Tag
 
 This is the simplest case. Get the script in whatever way you prefer and include the plugin _after_ you include [video.js][videojs], so that the `videojs` global is available.
