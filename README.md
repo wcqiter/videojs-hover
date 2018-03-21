@@ -2,10 +2,15 @@
 
 A plugin for video.js. For customizable overlay of text and images on video.
 
-## Installation
+## Clone and Build
 
 ```sh
-npm install --save @videojs-hover/videojs-hover
+git clone https://github.com/wcqiter/videojs-hover.git .
+```
+
+```sh
+npm install
+npm run-script build
 ```
 
 ## Usage
@@ -31,7 +36,7 @@ This is the simplest case. Get the script in whatever way you prefer and include
 
 ### Options
 
-This is a sample options of hover plugin. 
+This is a sample options of hover plugin.
 ```
 player.hover(
   {
