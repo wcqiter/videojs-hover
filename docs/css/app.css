@@ -1,0 +1,25 @@
+.vjs-seek-button {
+  background-size: 24px 24px !important;
+  background-position: center !important;
+  background-repeat:   no-repeat !important;
+}
+.vjs-seek-button.skip-forward {
+    background-image: url("/img/ic_fast_forward_white_24dp_1x.png");
+}
+
+.vjs-seek-button.skip-back {
+    background-image: url("/img/ic_fast_rewind_white_24dp_1x.png");
+}
+
+.player-area {
+  display: flex;
+}
+
+.playlist-container {
+  float: left;
+  background-color: #000;
+  max-width: 20%;
+}
+.vjs-playlist {
+  margin-top: 0px;
+}
